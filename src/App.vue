@@ -2,13 +2,16 @@
 
   <ElevatedCardLayout :opened="!!bookFile">
     <div v-show="bookFile" class="book-container">
-      <div class="book">
+      <div class="book" :class="{'show': bookLoaded}">
         <div id="pages" class="pages">
           
         </div>
       </div>
     </div>
-    <input v-show="!bookFile" type="file" accept="application/pdf" name="file" id="FileInput" v-on:change="uploadFile">
+      <label class="book-input" v-show="!bookFile">
+        <input  type="file" accept="application/pdf" name="file" id="FileInput" v-on:change="uploadFile">
+          <i data-feather="book-open"></i>
+      </label>
   </ElevatedCardLayout>
   <!-- {{ uploadProgress }}
   {{ totalPageNumber }} -->
@@ -21,7 +24,8 @@ export default {
   data: () => ({
     bookFile: null,
     uploadProgress: 0,
-    totalPageNumber: 0
+    totalPageNumber: 0,
+    bookLoaded: false
   }),
   computed: {
     showExtraPage () {
@@ -32,9 +36,6 @@ export default {
     ElevatedCardLayout
   },
   mounted () {
-    // document.addEventListener('DOMContentLoaded', function () {
-    //   this.initiatePages()
-    // })
   },
   methods: {
     initiatePages () {
@@ -131,9 +132,10 @@ export default {
     async uploadFile(event) {
       this.bookFile = event.target.files[0];
       await this.pdfToImages(this.bookFile)
+      this.initiatePages()
       setTimeout(() => {
-        this.initiatePages()
-      }, 1000)
+        this.bookLoaded = true
+      }, 2000)
     }
   }
 }

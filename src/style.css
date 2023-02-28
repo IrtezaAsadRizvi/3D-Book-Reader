@@ -31,6 +31,34 @@
 }
 .book {
   perspective: 250vw;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.book.show {
+  opacity: 1;
+}
+.book-container {
+  z-index: 1000;
+}
+.book-input {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.book-input input[type="file"] {
+  display: none;
+}
+
+.book-input svg {
+  pointer-events: none;
+  transform: scale(1.2);
+  color: #EF414C;
+  /* text-shadow: 1px 1px 2px #F6A7A7, 0 0 1.45px #ED8C82, 0 0 1.45px rgba(0, 0, 0, 0.25); */
 }
 .book .pages {
   width: 60vw;
@@ -56,6 +84,7 @@
   cursor: pointer;
   user-select: none;
   background-color: #f0f0f0;
+  overflow: hidden;
 }
 .book .page:before {
   content: '';
@@ -72,7 +101,7 @@
   pointer-events: all;
   transform: rotateY(0deg);
   right: 0;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 12px 12px 0;
   background-image: linear-gradient(to right, rgba(0,0,0,.15) 0%, rgba(0,0,0,0) 10%);
 }
 .book .page:nth-child(odd):hover {
@@ -89,7 +118,7 @@
   transform: rotateY(180deg);
   transform-origin: 100% 0;
   left: 0;
-  border-radius: 4px 0 0 4px;
+  border-radius: 12px 0 0 12px;
   border-color: black;
   background-image: linear-gradient(to left, rgba(0,0,0,.12) 0%, rgba(0,0,0,0) 10%);
 }
