@@ -5,6 +5,10 @@
 		</div>
 	</div>
 
+	<div id="actions" class="actions">
+		<a href="#" @click.prevent="upload" v-show="progress === 0 || progress === 100"><i data-feather="plus"></i></a>
+	</div>
+
 	<div id="socials" class="socials">
 		<a href="https://codepen.io/IrtezaAsad" target="_blank"><i data-feather="codepen"></i></a>
 		<a href="https://irtezaasadrizvi.medium.com/" target="_blank"><i data-feather="pen-tool"></i></a>
@@ -20,12 +24,17 @@ export default {
 			type: Boolean,
 			required: true,
 			default: false
+		},
+		progress: {
+			required: true,
+			default: 0
 		}
 	},
 	mounted() {
 		feather.replace()
 		setTimeout(() => {
 			document.getElementById('socials').classList.add('visible')
+			document.getElementById('actions').classList.add('visible')
 		}, 1000)
 	},
 	watch: {
@@ -34,6 +43,10 @@ export default {
 		}
 	},
 	methods: {
+
+		upload() {
+			this.$emit('upload')
+		},
 		initiateTilt () {
 			(function ($) {
 				"use strict";
@@ -150,7 +163,7 @@ export default {
 	height: 1000vh !important;
 }
 
-.socials {
+.actions, .socials {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -162,6 +175,10 @@ export default {
 	z-index: 15;
 	transition: all 1s ease-in-out;
 }
+.actions {
+	right: unset;
+	left: 0;
+}
 
 @media only screen and (max-width: 768px) {
 	.socials {
@@ -169,19 +186,19 @@ export default {
 	}
 }
 
-.socials a {
+.actions a, .socials a {
 	color: white;
 	margin: 0 3px;
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
 }
 
-.socials a:hover {
+.actions a:hover, .socials a:hover {
 	color: #EE9112;
 	transform: scale(1.1);
 }
 
-.socials.visible {
+.actions.visible, .socials.visible {
 	bottom: 0 !important;
 }
 </style>

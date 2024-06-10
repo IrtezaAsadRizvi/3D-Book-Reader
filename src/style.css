@@ -159,6 +159,7 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   min-height: 100vh;
   max-width: 100vw;
+  overflow: hidden;
   margin: 0;
 }
 html {
@@ -166,4 +167,30 @@ html {
 }
 .page:nth-child(odd){
   background-position: right top;
+}
+
+
+.loader {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 4px;
+  border-radius: 2px;
+  margin: 120px auto 0 auto;
+  background-color: #b8222c;
+  overflow: hidden;
+  transition: opacity 0.3s ease-in-out;
+}
+.loader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.loader .progress {
+  position: absolute;
+  background-color: #F5F5F5;
+  left: 0;
+  top: 0;
+  bottom: 0;
 }
