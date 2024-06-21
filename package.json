@@ -1,9 +1,10 @@
 {
-  "name": "text-animation",
+  "name": "3D-Book-Reader",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://tljafar.github.io/text-animation",
+  "author": "Irteza Asad",
+  "homepage": "https://irtezaasadrizvi.github.io/3D-Book-Reader",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
