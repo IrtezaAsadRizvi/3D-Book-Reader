@@ -34,7 +34,7 @@ export default {
     },
     mounted() {
         setTimeout(() => {
-            this.uploadUrl('http://localhost:5173/manga.pdf')
+            this.uploadUrl('/manga.pdf')
         }, 1000)
     },
     methods: {
