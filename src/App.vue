@@ -34,7 +34,7 @@ export default {
     },
     mounted() {
         setTimeout(() => {
-            this.uploadUrl('/manga.pdf')
+            this.uploadUrl('https://irtezaasadrizvi.github.io/3D-Book-Reader/manga.pdf')
         }, 1000)
     },
     methods: {
